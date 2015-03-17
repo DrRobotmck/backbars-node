@@ -1,0 +1,37 @@
+{
+  "name": "backbars",
+  "version": "1.0.0",
+  "description": "Boilerplate express install with backbone, handlebars support, sequelize, and pg support",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "backbone",
+    "express",
+    "handlebars",
+    "sequelize",
+    "pg",
+    "postgres",
+    "node"
+  ],
+  "author": "McKenneth Scott III",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "2.6.0",
+    "mkdirp": "0.5.0"
+  },
+  "main": "bin/backbars",
+  "preferGlobal": true,
+  "bin": {
+    "backbars": "./bin/backbars"
+  },
+  "engines": {
+    "node": ">= 0.10"
+  },
+  "files": [
+    "LICENSE",
+    "bin/",
+    "templates/"
+  ]
+}
