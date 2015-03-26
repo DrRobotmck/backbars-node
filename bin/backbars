@@ -1,16 +1,11 @@
 #!/usr/bin/env node
 
-var program = require('commander');
-var mkdirp = require('mkdirp');
-var os = require('os');
-var fs = require('fs');
-var path = require('path');
-var readline = require('readline');
-
-var eol = os.EOL;
-var pkg = require('../package.json');
-
-var version = pkg.version;
+var program = require('commander'),
+    mkdirp  = require('mkdirp'),
+    fs      = require('fs'),
+    path    = require('path'),
+    pkg     = require('../package.json'),
+    version = pkg.version;
 
 // CLI
 
@@ -33,16 +28,15 @@ var createApplication = function(appName, location) {
 		console.log('nodemon to start server');
 	};
 
-	var server = readTemplate('js/server.js');
-	var www = readTemplate('js/www');
-	var packageJson = readTemplate('js/package.json');
-	var modelsIndex = readTemplate('js/index.js');
-	var sampleConfig = readTemplate('js/config.json');
-	var sampleMigration = readTemplate('js/sample_migration.js');
-	var browserDependencies = readTemplate('js/main.js');
-	var app = readTemplate('js/app.js');
-	var bundle = readTemplate('js/bundle.js');
-	var index = readTemplate('html/index.html');
+	var server 							= readTemplate('js/server.js'),
+	    www    							= readTemplate('js/www'),
+	    packageJson 				= readTemplate('js/package.json'),
+	    modelsIndex 				= readTemplate('js/index.js'),
+	    configFile          = readTemplate('js/config.json'),
+	    browserDependencies = readTemplate('js/main.js'),
+	    app                 = readTemplate('js/app.js'),
+	    bundle              = readTemplate('js/bundle.js'),
+	    index               = readTemplate('html/index.html');
 
 	makeFolder(location, function() {
 		makeFolder(location + '/public', function() {
@@ -57,15 +51,17 @@ var createApplication = function(appName, location) {
 			writeToFile(location + '/public/js/app.js', app, null);
 		});
 
-		makeFolder(location + '/public/css');
+		makeFolder(location + '/public/css', function() {
+			writeToFile(location + '/public/css/.keep', null, null);
+		});
 
 		makeFolder(location + '/config', function() {
-			sampleConfig = sampleConfig.replace('{name}', appName)
-			writeToFile(location + '/config/config.json', sampleConfig, null);
+			configFile = configFile.replace('{name}', appName)
+			writeToFile(location + '/config/config.json', configFile, null);
 		});
 
 		makeFolder(location + '/migrations', function() {
-			writeToFile(location + '/migrations/migration.js', sampleMigration, null);
+			writeToFile(location + '/migrations/.keep', null, null);
 		});
 
 		makeFolder(location + '/models', function() {
