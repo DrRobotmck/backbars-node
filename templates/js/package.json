@@ -16,6 +16,6 @@
     "underscore": "^1.8.2"
   },
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "./bin/www"
   }
 }
