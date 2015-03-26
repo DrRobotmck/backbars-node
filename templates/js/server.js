@@ -15,6 +15,5 @@ app.use( express.static( path.join( application_root, 'browser' )))
 
 // Routes
 
-
 // Export app as module
 module.exports = app;
