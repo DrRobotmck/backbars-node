@@ -16,7 +16,8 @@ var app = express();
 // set up server logs in development
 app.use(logger('dev'));
 // set up request parsing
-app.use( bodyParser() );
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 // set up method override for PUT and DELETE
 app.use( methodOverride() );
 // set up serving of static assets
